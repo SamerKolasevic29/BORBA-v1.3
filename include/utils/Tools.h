@@ -15,8 +15,7 @@ namespace Tools {
     // Random Generator
     int randomInt(int min, int max);
 
-    // System Utilities
-    void clearScreen();
+   
 
      #ifdef _WIN32
     void playMusic(const std::string& fileName);

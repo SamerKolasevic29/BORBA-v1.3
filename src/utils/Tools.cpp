@@ -73,9 +73,6 @@ namespace Tools {
         return distribution(generator);
     }
 
-    void clearScreen() {
-        std::cout << "\033[2J\033[H" << std::flush;
-    }
 
     #ifdef _WIN32
     void playMusic(const std::string& fileName) {

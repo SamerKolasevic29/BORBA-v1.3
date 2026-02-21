@@ -25,7 +25,9 @@ namespace UI {
 
     // ---[ CMD FORMATING FUNCS ]---
 
-    void clearScreen() { Tools::clearScreen( ); }
+    void clearScreen() {
+        cout << "\033[2J\033[H" << std::flush;
+    }
 
     void clearLines(int count) {
         for (int i = 0; i < count; i++) {
