@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <memory>
 #include "../models/Fighter.h"
 #include "Animation.h"
 
@@ -50,10 +51,10 @@ namespace UI {
     Fighter createFighterUI();
 
     // ---[ FIGHTER LIST ]---
-    void fightersInfo(const std::vector<Fighter>& list);
+    void fightersInfo(const std::vector<std::unique_ptr<Fighter>>& list);
 
     // ---[ 'choose your fighter' LIST ]---
-    void chooseFighter(const std::vector<Fighter>& f, int fightersPerRow = 3, int option = -1);
+    void chooseFighter(const std::vector<std::unique_ptr<Fighter>>& f, int fightersPerRow = 3, int option = -1);
 
     // ---[BATTLE HUD]---
     void fightInfoBar(const Fighter& f1, const Fighter& f2);

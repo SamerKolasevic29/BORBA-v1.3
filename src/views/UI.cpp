@@ -18,6 +18,7 @@ using std::right;
 using std::setfill;
 using std::string;
 using std::to_string; 
+using std::unique_ptr;
 
 namespace UI {
     // Using helper
@@ -232,7 +233,7 @@ namespace UI {
     }
 
     // ---[ LIST & CHOOSE]---
-    void fightersInfo(const vector<Fighter>& list){
+    void fightersInfo(const vector<unique_ptr<Fighter>>& list){
         writeLine("\n\n\t\t\t\t-/ FIGHTERS INFO \\-\n\n", WHITE, 1);
         writeLine("  |      Name      |",BRIGHT_BLACK, 5); writeLine("    Health    ", BRIGHT_BLACK, 5); cout << "|"; 
         writeLine("  Light Attack  ", BRIGHT_BLACK, 5); cout << "|"; writeLine(" Special Attack ", BRIGHT_BLACK, 5); cout << "|";
@@ -240,20 +241,20 @@ namespace UI {
         
         for(size_t i = 0; i < list.size(); i++){
             cout << setw(2) << right << i + 1 << ". ";
-            writeLine(list[i].Name(), WHITE, 20);
-            cout <<  setw(16 - list[i].Name().length()) << setfill(' ') << "|";
-            writeLine(list[i].HealthStr(), BRIGHT_GREEN, 20);
-            cout <<  setw(15 - list[i].HealthStr().length()) << setfill(' ') << "|";
-            writeLine(list[i].LightAttackStr(), BRIGHT_RED, 20);
-            cout <<  setw(17 - list[i].LightAttackStr().length()) << setfill(' ') << "|";
-            writeLine(list[i].SpecialAttackStr(), RED, 20);
-            cout <<  setw(17 - list[i].SpecialAttackStr().length()) << setfill(' ') << "|";
-            writeLine(list[i].CriticalStr(), BRIGHT_YELLOW, 20);
-            cout <<  setw(19 - list[i].CriticalStr().length()) << setfill(' ') << "|\n\n";
+            writeLine(list[i]->Name(), WHITE, 20);
+            cout <<  setw(16 - list[i]->Name().length()) << setfill(' ') << "|";
+            writeLine(list[i]->HealthStr(), BRIGHT_GREEN, 20);
+            cout <<  setw(15 - list[i]->HealthStr().length()) << setfill(' ') << "|";
+            writeLine(list[i]->LightAttackStr(), BRIGHT_RED, 20);
+            cout <<  setw(17 - list[i]->LightAttackStr().length()) << setfill(' ') << "|";
+            writeLine(list[i]->SpecialAttackStr(), RED, 20);
+            cout <<  setw(17 - list[i]->SpecialAttackStr().length()) << setfill(' ') << "|";
+            writeLine(list[i]->CriticalStr(), BRIGHT_YELLOW, 20);
+            cout <<  setw(19 - list[i]->CriticalStr().length()) << setfill(' ') << "|\n\n";
         }
     }
 
-    void chooseFighter(const vector<Fighter>& f, int fightersPerRow, int option){
+    void chooseFighter(const vector<unique_ptr<Fighter>>& f, int fightersPerRow, int option){
         writeLine("\n\n\t\t\t\t-/ CHOOSE YOUR FIGHTER \\-\n\n", WHITE, 1);
         cout << "\t"; sq(BRIGHT_GREEN); writeLine(" -- HEALTH\t", BRIGHT_WHITE, 10);
         sq(BRIGHT_RED); writeLine(" -- LIGHT ATTACK\t", BRIGHT_WHITE, 10);
@@ -271,7 +272,7 @@ namespace UI {
             // Names
             for(int i = 0; i < fightersInThisRow; i++){
                 string id = to_string(idx + i + 1) + ". ";
-                writeColumnText(id + f[idx + i].Name(), columnWidth, BRIGHT_WHITE, 10);
+                writeColumnText(id + f[idx + i]->Name(), columnWidth, BRIGHT_WHITE, 10);
             }
             cout << "\n\t    ";
             
@@ -279,7 +280,7 @@ namespace UI {
             for(int i = 0; i < fightersInThisRow; i++){
                 if(option == idx + i + 1) cout << getAnsiCode(BRIGHT_BLACK);
                 else cout << getAnsiCode(BRIGHT_GREEN);
-                cout << setw(columnWidth) << left << f[idx + i].HealthStr();
+                cout << setw(columnWidth) << left << f[idx + i]->HealthStr();
             }
             cout << "\n\t    ";
             
@@ -287,7 +288,7 @@ namespace UI {
             for(int i = 0; i < fightersInThisRow; i++){
                 if(option == idx + i + 1) cout << getAnsiCode(BRIGHT_BLACK);
                 else cout << getAnsiCode(BRIGHT_RED);
-                cout << setw(columnWidth) << left << f[idx + i].LightAttackStr();
+                cout << setw(columnWidth) << left << f[idx + i]->LightAttackStr();
             }
             cout << "\n\t    ";
             
@@ -295,7 +296,7 @@ namespace UI {
             for(int i = 0; i < fightersInThisRow; i++){
                 if(option == idx + i + 1) cout << getAnsiCode(BRIGHT_BLACK);
                 else cout << getAnsiCode(RED);
-                cout << setw(columnWidth) << left << f[idx + i].SpecialAttackStr();
+                cout << setw(columnWidth) << left << f[idx + i]->SpecialAttackStr();
             }
             cout << "\n\t    ";
             
@@ -303,7 +304,7 @@ namespace UI {
             for(int i = 0; i < fightersInThisRow; i++){
                 if(option == idx + i + 1) cout << getAnsiCode(BRIGHT_BLACK);
                 else cout << getAnsiCode(BRIGHT_YELLOW);
-                cout << setw(columnWidth) << left << f[idx + i].CriticalStr();
+                cout << setw(columnWidth) << left << f[idx + i]->CriticalStr();
             }
             cout << "\n\t" << getAnsiCode(BRIGHT_WHITE); repeatChar('_', columnWidth * fightersPerRow); cout << "\n\n";
         }
