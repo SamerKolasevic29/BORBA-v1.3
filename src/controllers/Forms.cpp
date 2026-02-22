@@ -51,6 +51,9 @@ namespace Forms {
 
         // 2. Choosing Fighter (Human)
         uint8_t p1_idx = optionBox(FormContext::PICK_FIGHTER, roster.size());
+        if (p1_idx == 0)
+                    return;
+
         displayFighterPreview(roster, p1_idx - 1);
         wait(2);
         
@@ -59,6 +62,9 @@ namespace Forms {
         // 3. Choosing Fighter (AI)
         chooseFighter(roster, 3, p1_idx);
         uint8_t p2_idx = optionBox(FormContext::PICK_FIGHTER, roster.size());
+        if(p2_idx == 0) 
+                    return;
+
         displayFighterPreview(roster, p2_idx - 1);
         wait(2);
 
@@ -77,6 +83,9 @@ namespace Forms {
         chooseFighter(roster, 3);
 
         uint8_t p1_idx = optionBox(FormContext::PICK_FIGHTER, roster.size());
+        if (p1_idx == 0)
+                    return;
+
         displayFighterPreview(roster, p1_idx - 1);
         wait(2);
         
@@ -84,6 +93,9 @@ namespace Forms {
 
         chooseFighter(roster, 3, p1_idx);
         uint8_t p2_idx = optionBox(FormContext::PICK_FIGHTER, roster.size());
+        if(p2_idx == 0) 
+                    return;
+
         displayFighterPreview(roster, p2_idx - 1);
         wait(2);
 
@@ -122,6 +134,12 @@ namespace Forms {
 
          wait(2);
         return true;
+    }
+
+    void showAboutUsScene() {
+        clearScreen();
+        aboutUs();
+        optionBox(FormContext::ONLY_BACK);
     }
 
 }

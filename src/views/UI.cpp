@@ -43,6 +43,10 @@ namespace UI {
         cout << "\033[" << count << "B";
     }
 
+    void hideCursor(){
+        cout << "\033[?25l" << flush;
+    }
+
     void showCursor(){
         cout << "\033[?25h" << flush;
     }
@@ -56,6 +60,7 @@ namespace UI {
     // ---[ LOADING COMPONENTS ]---
 
     void loadingCSV(bool loaded){
+        clearScreen();
         writeLine("Loading fighters...   ", CYAN, 50);
         bar(8, BRIGHT_CYAN, 100);
         
@@ -102,12 +107,12 @@ namespace UI {
     }
 
     inline void printLogo() {
-	 writeLine("\033[?25l       ____   ___   ____  ____    _        \n", WHITE, 1);
-    writeLine("      | __ ) / _ \\ |  _ \\| __ )  / \\       \n", BRIGHT_YELLOW, 1);
-    writeLine("      |  _ \\| | | || |_) |  _ \\ / _ \\      \n", YELLOW, 1);
-    writeLine("      | |_) | |_| ||  _ <| |_) / ___ \\     \n", BRIGHT_RED, 1);
-    writeLine("      |____/ \\___/ |_| \\_\\____/_/   \\_\\   \033[0m\n ", RED, 1);
-    writeLine("\033[5m             \\_[Version: 1.3]_/                      \033[0m\n\n\n", BRIGHT_WHITE, 2);
+	 writeLine("\033[?25l       ____   ___   ____  ____    _        \n", WHITE, 15);
+    writeLine("      | __ ) / _ \\ |  _ \\| __ )  / \\       \n", BRIGHT_YELLOW, 15);
+    writeLine("      |  _ \\| | | || |_) |  _ \\ / _ \\      \n", YELLOW, 15);
+    writeLine("      | |_) | |_| ||  _ <| |_) / ___ \\     \n", BRIGHT_RED, 15);
+    writeLine("      |____/ \\___/ |_| \\_\\____/_/   \\_\\   \033[0m\n ", RED, 15);
+    writeLine("\033[5m             \\_[Version: 1.3]_/                      \033[0m\n\n\n", BRIGHT_WHITE, 6);
     }
 
     // ---[ MENUS ]---
@@ -118,33 +123,33 @@ namespace UI {
     writeLine("                   VS Comp", BRIGHT_BLACK, 5);
 	writeLine("    ---    ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("1", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
 	writeLine("                    PvP", BRIGHT_BLACK, 5);
-	writeLine("    ---      ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("2", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
+	writeLine("    ---       ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("2", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
 	writeLine("               Fighters Info", BRIGHT_BLACK, 5);
 	writeLine("   ---   ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("3", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
 	writeLine("              Create Fighters", BRIGHT_BLACK, 5);
-	writeLine("  ---  ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("4", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
+	writeLine("   ---  " ,WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("4", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
 	writeLine("                 About Us", BRIGHT_BLACK, 5);
-	writeLine("    ---    ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("5", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
+	writeLine("    ---     ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("5", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
 	writeLine("                   Exit", BRIGHT_BLACK, 5);
-	writeLine("    -----    ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("0", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
+	writeLine("    -----     ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("0", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
     }
 
     void firstMenu() {
 	cout << "\033[H";
     printLogo();
     writeLine("               -/ MAIN MENU \\-\n\n", WHITE, 1);
-    writeLine("                   VS Comp", BRIGHT_BLACK, 5);
-	writeLine("    ---    ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("1", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
-	writeLine("                     PvP", BRIGHT_BLACK, 5);
-	writeLine("    ---      ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("2", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
-	writeLine("                Fighter Info", BRIGHT_BLACK, 5);
-	writeLine("   ---   ",WHITE,5); writeLine("[", BRIGHT_RED, 5);writeLine("3", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
-	writeLine("               Create Fighters", BRIGHT_BLACK, 5);
-	writeLine("  ---  ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("4", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
-	writeLine("                  About Us", BRIGHT_BLACK, 5);
-	writeLine("    ---    ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("5", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
-	writeLine("                    Exit", BRIGHT_BLACK, 5);
-	writeLine("    -----    ",WHITE,5); writeLine("[", BRIGHT_RED, 5); writeLine("0", BRIGHT_WHITE, 5); writeLine("]\n", BRIGHT_RED, 5);
+    writeLine("                   VS Comp", BRIGHT_BLACK, 20);
+	writeLine("    ---    ",WHITE,10); writeLine("[", BRIGHT_RED, 20);writeLine("1", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
+	writeLine("                    PvP", BRIGHT_BLACK, 20);
+	writeLine("    ---       ",WHITE,5); writeLine("[", BRIGHT_RED, 20);writeLine("2", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
+	writeLine("               Fighters Info", BRIGHT_BLACK, 20);
+	writeLine("   ---   ",WHITE,5); writeLine("[", BRIGHT_RED, 20);writeLine("3", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
+	writeLine("              Create Fighters", BRIGHT_BLACK, 20);
+	writeLine("   ---  " ,WHITE,5); writeLine("[", BRIGHT_RED, 20); writeLine("4", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
+	writeLine("                 About Us", BRIGHT_BLACK, 20);
+	writeLine("    ---     ",WHITE,5); writeLine("[", BRIGHT_RED, 20); writeLine("5", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
+	writeLine("                   Exit", BRIGHT_BLACK, 20);
+	writeLine("    -----     ",WHITE,5); writeLine("[", BRIGHT_RED, 20); writeLine("0", BRIGHT_WHITE, 20); writeLine("]\n", BRIGHT_RED, 20);
 
    }
 
@@ -233,6 +238,7 @@ namespace UI {
     }
 
     // ---[ LIST & CHOOSE]---
+
     void fightersInfo(const vector<unique_ptr<Fighter>>& list){
         writeLine("\n\n\t\t\t\t-/ FIGHTERS INFO \\-\n\n", WHITE, 1);
         writeLine("  |      Name      |",BRIGHT_BLACK, 5); writeLine("    Health    ", BRIGHT_BLACK, 5); cout << "|"; 
@@ -255,6 +261,7 @@ namespace UI {
     }
 
     void chooseFighter(const vector<unique_ptr<Fighter>>& f, int fightersPerRow, int option){
+        
         writeLine("\n\n\t\t\t\t-/ CHOOSE YOUR FIGHTER \\-\n\n", WHITE, 1);
         cout << "\t"; sq(BRIGHT_GREEN); writeLine(" -- HEALTH\t", BRIGHT_WHITE, 10);
         sq(BRIGHT_RED); writeLine(" -- LIGHT ATTACK\t", BRIGHT_WHITE, 10);
@@ -313,11 +320,11 @@ namespace UI {
 
     // ---[BATTLE HUD]---
 
-    void fightInfoBar(Fighter* f){
+    void fightInfoBar(const Fighter& f1, const Fighter& f2){
     	cout << getAnsiCode(BRIGHT_BLACK) << "\n\n\t============================================================\n\t|"
     	<< getAnsiCode(BRIGHT_YELLOW) <<            "        [PLAYER I]                     [PLAYER II]        " << getAnsiCode(BRIGHT_BLACK) << "|\n\t|" 
-    	<< getAnsiCode(BRIGHT_WHITE)  <<            "        " << f[0].Name() << setw(35-f[0].Name().length()) << setfill(' ') << f[1].Name() <<  setw(24-f[1].Name().length()) 
-	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t|"<< "        "<< getAnsiCode(BRIGHT_GREEN) << f[0].HealthStr() << setw(37-f[0].HealthStr().length()) << setfill(' ') << f[1].HealthStr() <<  setw(24-f[1].HealthStr().length()) 
+    	<< getAnsiCode(BRIGHT_WHITE)  <<            "        " << f1.Name() << setw(35-f1.Name().length()) << setfill(' ') << f2.Name() <<  setw(24-f2.Name().length()) 
+	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t|"<< "        "<< getAnsiCode(BRIGHT_GREEN) << f1.HealthStr() << setw(37-f1.HealthStr().length()) << setfill(' ') << f2.HealthStr() <<  setw(24-f2.HealthStr().length()) 
 	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t============================================================\n\n" << getAnsiCode(WHITE);
 	}
 	
@@ -328,11 +335,11 @@ namespace UI {
         return "[" + name + "'s TURN]";
     }
     
-    inline void fightTurnBar(Fighter& f){
+    void fightTurnBar(const Fighter& f){
     	writeLine("\t" + nameLabel(f.Name()) + "\n", BRIGHT_YELLOW, 30);
 	}
 	
-    inline void fightOptionBar(const Fighter& f){
+    void fightOptionBar(const Fighter& f){
  	    writeLine("\tChoose Your Attack: \n\t", BRIGHT_WHITE, 20);
         writeLine("[", BRIGHT_BLACK, 20); writeLine("1", BRIGHT_RED, 20); writeLine("]--- Light Attack(",BRIGHT_BLACK, 20);	
         writeLine(f.LightAttackStr(), BRIGHT_RED, 20); writeLine(")           [", BRIGHT_BLACK, 20);
@@ -341,7 +348,7 @@ namespace UI {
         if(!f.FlagSpecial()) writeLine(f.SpecialAttackStr(), RED, 20);
          else writeLine("USED", BRIGHT_WHITE, 20); writeLine(")", BRIGHT_BLACK, 20);
 
-	    cout << "\n\t--------------------------------------------------------------------";
+	    cout << "\n\t-------------------------------------------------------------------\n";
     }
 
     void fightAttackBar(const Fighter& f1, const Fighter& f2, AttackType a){
@@ -410,7 +417,7 @@ namespace UI {
                 
                 case FormContext::PICK_FIGHTER:
                     // Limit is number of fighters
-                    if(choice > 0 && choice <= limit) valid = choice;
+                    if(choice >= 0 && choice <= limit) valid = choice;
                     break;
                 
                 case FormContext::BATTLE:

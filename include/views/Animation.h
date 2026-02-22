@@ -45,8 +45,8 @@ namespace Animation {
         // Block character (ASCII extended 178 or Unicode equivalent)
         // Note: In some terminals, extended ASCII might act weird. 
         // Using a safe UTF-8 block is better, but stick to your char if it works for you.
-        unsigned char block = 178; 
-        std::cout << getAnsiCode(c) << block;
+         
+        std::cout << getAnsiCode(c) << "\u2588";
     }
 
     inline void repeatChar(char ch, int count) {
@@ -109,15 +109,15 @@ namespace Animation {
     }
 
     inline void bar(int seg = 4 ,Color c = WHITE, int delay = 300){
-        const std::string segms(seg, char(178));
-        std::cout << getAnsiCode(c) <<  "[ ";
-        for(const char ch : segms){
-            std::cout << ch << std::flush;
-            std::this_thread::sleep_for(std::chrono::milliseconds(delay));
-        }
-        std::cout << " ]" << getAnsiCode(WHITE);
-        std::this_thread::sleep_for(std::chrono::seconds(2));
+    // Unicode Block
+    std::cout << getAnsiCode(c) << "[ ";
+    for(int i=0; i<seg; i++){
+        std::cout << "\u2588" << std::flush; // using unicode directly
+        std::this_thread::sleep_for(std::chrono::milliseconds(delay));
     }
+    std::cout << " ]" << getAnsiCode(WHITE) << std::flush;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+}
 
     inline void blinking(const std::string s = "", Color c = WHITE, int delay = 300, int reps = 3) {
         std::string blank(s.size(), ' ');

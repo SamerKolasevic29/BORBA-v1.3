@@ -61,6 +61,7 @@ int main() {
                 if (Roster.size() < 2) {
                     errorMessage(); // Requires 2 Fighters
                 } else {
+                    clearScreen();
                     runPvEScene(Roster);
                 }
                 break;

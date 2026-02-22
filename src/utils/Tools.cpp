@@ -57,7 +57,7 @@ namespace Tools {
             return false;
         }
 
-        file << f.Name() << ","
+        file <<"\n" << f.Name() << ","
              << f.Health() << ","
              << f.LightAttack() << ","
              << f.SpecialAttack() << ","
