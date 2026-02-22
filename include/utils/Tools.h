@@ -20,6 +20,7 @@ namespace Tools {
      #ifdef _WIN32
     void playMusic(const std::string& fileName);
     void stopMusic();
+    void enableAnsi();
     #endif
 
 }

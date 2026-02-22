@@ -21,6 +21,9 @@ using namespace Animation;
 
 int main() {
     // 1. Roster inicialisation (base of all fighers on Heap)
+    #ifdef _WIN32  
+        enableAnsi(); 
+    #endif
     vector<unique_ptr<Fighter>> Roster;
 
     // 2. load data from CSV

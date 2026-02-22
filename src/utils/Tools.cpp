@@ -82,6 +82,14 @@ namespace Tools {
      void stopMusic() {
         PlaySound(NULL, 0, 0);
     }
+
+     void enableAnsi() {
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+        DWORD dwMode = 0;
+        GetConsoleMode(hOut, &dwMode);
+        dwMode |= 0x0004; // ENABLE_VIRTUAL_TERMINAL_PROCESSING
+        SetConsoleMode(hOut, dwMode);
+     }
     #endif
 
 
