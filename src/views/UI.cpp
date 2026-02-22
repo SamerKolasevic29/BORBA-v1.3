@@ -265,7 +265,7 @@ namespace UI {
         writeLine("\n\n\t\t\t\t-/ CHOOSE YOUR FIGHTER \\-\n\n", WHITE, 1);
         cout << "\t"; sq(BRIGHT_GREEN); writeLine(" -- HEALTH\t", BRIGHT_WHITE, 10);
         sq(BRIGHT_RED); writeLine(" -- LIGHT ATTACK\t", BRIGHT_WHITE, 10);
-        sq(RED); writeLine(" -- SPECIAL ATTCK\t", BRIGHT_WHITE, 10);
+        sq(RED); writeLine(" -- SPECIAL ATTCAK\t", BRIGHT_WHITE, 10);
         sq(BRIGHT_YELLOW); writeLine(" -- CRIT. CHANCE\n", BRIGHT_WHITE, 10);
         
         const int columnWidth = 21;
@@ -323,8 +323,8 @@ namespace UI {
     void fightInfoBar(const Fighter& f1, const Fighter& f2){
     	cout << getAnsiCode(BRIGHT_BLACK) << "\n\n\t============================================================\n\t|"
     	<< getAnsiCode(BRIGHT_YELLOW) <<            "        [PLAYER I]                     [PLAYER II]        " << getAnsiCode(BRIGHT_BLACK) << "|\n\t|" 
-    	<< getAnsiCode(BRIGHT_WHITE)  <<            "        " << f1.Name() << setw(35-f1.Name().length()) << setfill(' ') << f2.Name() <<  setw(24-f2.Name().length()) 
-	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t|"<< "        "<< getAnsiCode(BRIGHT_GREEN) << f1.HealthStr() << setw(37-f1.HealthStr().length()) << setfill(' ') << f2.HealthStr() <<  setw(24-f2.HealthStr().length()) 
+    	<< getAnsiCode(BRIGHT_WHITE)  <<            "        " << f1.Name() << setw(31-f1.Name().length()) << "" << f2.Name() <<  setw(24-f2.Name().length()) 
+	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t|"<< "        "<< getAnsiCode(BRIGHT_GREEN) << f1.HealthStr() << setw(31-f1.HealthStr().length()) << "" << f2.HealthStr() <<  setw(24-f2.HealthStr().length()) 
 	    << getAnsiCode(BRIGHT_BLACK)  << "|\n\t============================================================\n\n" << getAnsiCode(WHITE);
 	}
 	
