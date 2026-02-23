@@ -89,6 +89,8 @@ namespace Tools {
         GetConsoleMode(hOut, &dwMode);
         dwMode |= 0x0004; // ENABLE_VIRTUAL_TERMINAL_PROCESSING
         SetConsoleMode(hOut, dwMode);
+
+         SetConsoleOutputCP(65001); 
      }
     #endif
 
